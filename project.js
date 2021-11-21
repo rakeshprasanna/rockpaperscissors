@@ -4,10 +4,10 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection=prompt(playerSelection.toUpperCase());
+    playerSelection=prompt("Please Enter your choice");
+    playerSelection=playerSelection.toUpperCase()
     computerSelection=computerPlay();
     let ifPlayerWon=false;
-    let isDraw=false;
 
     switch (playerSelection) {
         case "ROCK":
@@ -31,26 +31,20 @@ function playRound(playerSelection, computerSelection) {
                 ifPlayerWon=true;
                 return "You won a Point";
             }
-        default:
-            isDraw=true;
-            return "MATCH DRAW";
     }
 
   }
 
-  function game(){
+  function game(isDraw,ifPlayerWon){
     let playerPoints=0;
     let computerPoints=0;
+    let play;
       for (let index = 0; index < 5; index++) {
-          playRound();
-          if(isDraw==true){
-              index--;
-              continue;
-          }
-          else{
-          if(isDraw==false && ifPlayerWon==true) playerPoints++;
-          else if (isDraw==false && ifPlayerWon==false) computerPoints++;
-          }
+          play=playRound();
+          console.log(play);
+          if(ifPlayerWon===true) playerPoints++;
+          else if (ifPlayerWon===false) computerPoints++;
+          console.log(playerPoints);
       }
     if(playerPoints>computerPoints) console.log("Player WINS!");
     else console.log("Player LOSES");
